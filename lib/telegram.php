@@ -52,7 +52,7 @@ Txurrerue: 946882073";
 				$this->request('sendMessage', $params);
 				break;
 			}
-/*
+
 			case '/golazo':
 			{
 				$filename = PATH."/images/senor.jpg";
@@ -73,7 +73,7 @@ Txurrerue: 946882073";
 
 				break;
 			}
-*/
+
 			case '/estropadak':
 			{
 				$response = "Málaga              2015/06/28 12:00
@@ -130,50 +130,6 @@ Portugalete         2015/09/20 12:30";
                                         'reply_to_message_id' => $reply_to_message_id
                                 );
                                 $this->request('sendMessage', $params);
-                                break;
-			}
-
-			case '/garrote':
-			{
-				include('imgur.php');
-
-				//$imgur = new imgur('spaceporn', $chat_id);
-				$imgur = new imgur('nsfw', $chat_id);
-				$filename = $imgur->getResource();
-
-                                if(class_exists('CURLFile'))
-                                        $cfile = new CURLFile($filename);
-                                else
-                                        $cfile = "@".$filename;
-
-                                $params = array
-                                (
-                                        'chat_id' => $chat_id,
-                                        'photo' => $cfile,
-                                        'reply_to_message_id' => $reply_to_message_id,
-                                        'reply_markup' => null
-                                );
-
-				$method = 'sendPhoto';
-				if(preg_match("/\.mp4$/", $filename))
-				{
-					unset($params['photo']);
-					$params['video'] = $cfile;
-					$method = 'sendVideo';
-				}
-
-                                $this->request($method, $params);
-
-                                $params = array
-                                (
-                                        'chat_id' => $chat_id,
-                                        'text' => "debug: ".$filename,
-                                        'disable_web_page_preview' => null,
-                                        'reply_to_message_id' => $reply_to_message_id
-                                );
-                                $this->request('sendMessage', $params);
-
-				file_put_contents($filename, '');
                                 break;
 			}
 
