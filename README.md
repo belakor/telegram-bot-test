@@ -1,30 +1,53 @@
+php-telebot-heroku
+==================
+PHP Telegram BOT for Heroku
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+EDIT: **config.json** with **Heroku APP ID** and **TELEGRAM API KEY**
 
+EDIT: **lib/telegram.php** to write your commands
 
-Hi there! Welcome to Cloud9 IDE!
+Get Telegram API Key: https://core.telegram.org/bots#botfather
 
-To get you started, we have created a small hello world application.
+GNU/Linux Instructions:
+=======================
 
-1) Open the hello-world.php file
+Create an account in Heroku:
+https://www.heroku.com
 
-2) Follow the run instructions in the file's comments
+Create a new app in Heroku:
+https://dashboard.heroku.com/new
 
-3) If you want to look at the Apache logs, check out ~/lib/apache2/log
+Install Heroku
+```
+su
+wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+exit
+```
 
-And that's all there is to it! Just have fun. Go ahead and edit the code, 
-or add new files. It's all up to you! 
+Download project:
+```
+mkdir -p /home/projects
+cd /home/projects
+git clone https://github.com/ZiTAL/php-telebot-heroku.git
+cd /home/projects/php-telebot-heroku
+rm -rf .git
+```
 
-Happy coding!
-The Cloud9 IDE team
+Connect the project to Heroku's git:
+```
+heroku login
+heroku create
+git init
+```
+Edit **config.json** with **HEROKU APP ID** and **TELEGRAM API KEY**
+Upload changes to Heroku and Deploy the application:
+```
+git add .
+git commit -m "my first commit"
+heroku git:remote -a HEROKU_APP_ID
+git push heroku master
+```
 
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+License
+=======
+GPLv3
