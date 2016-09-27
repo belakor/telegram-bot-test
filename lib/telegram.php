@@ -58,15 +58,16 @@ class telegram
 				$keyboardButton3 = array(
 					'text' => "depende"
 				);
-				$keyboard = array($keyboardButton1, $keyboardButton2, $keyboardButton3);
-
+				$keyboard = array(
+					'keyboard' => array($keyboardButton1, $keyboardButton2, $keyboardButton3)
+				);
 				$params = array
 				(
 					'chat_id' => $chat_id,
 					'text' => $response,
 					'disable_web_page_preview' => null,
-					'reply_markup' => $keyboard,
-					'reply_to_message_id' => $reply_to_message_id
+					'reply_to_message_id' => $reply_to_message_id,
+					'reply_markup' => $keyboard
 				);
 				$this->request('sendMessage', $params);
 				break;
