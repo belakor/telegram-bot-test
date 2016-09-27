@@ -61,15 +61,15 @@ class telegram
 				    'one_time_keyboard' => true
 				);
 				
-				$reply_markup = $this->request('replyKeyboardMarkup', $parametros);
-			
+				// $reply_markup = $this->request('replyKeyboardMarkup', $parametros);
+				
 				$params = array
 				(
 					'chat_id' => $chat_id,
 					'text' => $response,
 					'disable_web_page_preview' => null,
 					'reply_to_message_id' => $reply_to_message_id,
-					'reply_markup' => $reply_markup
+					'reply_markup' => $parametros
 				);
 				$this->request('sendMessage', $params);
 				break;
