@@ -59,7 +59,11 @@ class telegram
 				// 	'text' => "depende"
 				// );
 				$keyboard = array(
-					'keyboard' => array('si', 'no', 'depende')
+					'keyboard' => [
+						['si'],
+						['no'], 
+						['depende']
+					]
 				);
 				$params = array
 				(
