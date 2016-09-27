@@ -54,13 +54,14 @@ class telegram
 				    ['no'],
 				    ['depende']
 				];
-			
-				$reply_markup = $telegram->replyKeyboardMarkup([
+				
+				$parametros = array(
 				    'keyboard' => $keyboard, 
 				    'resize_keyboard' => true, 
 				    'one_time_keyboard' => true
-				]);
-			
+				);
+				
+				$reply_markup = $this->request('replyKeyboardMarkup', $parametros);
 			
 				$params = array
 				(
