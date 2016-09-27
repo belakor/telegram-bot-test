@@ -79,10 +79,9 @@ class telegram
 				$response = "Bot creado para pruebas";
 				$params = array
                 (
-                         'chat_id' => $chat_id,
-                         'text' => $response,
-                         'disable_web_page_preview' => null,
-                         'reply_to_message_id' => $reply_to_message_id
+                    'text' => $response,
+                    'disable_web_page_preview' => null,
+                    'reply_to_message_id' => $reply_to_message_id
                 );
                 $this->request('sendMessage', $params);
 				default:
