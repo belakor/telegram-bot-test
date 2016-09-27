@@ -49,7 +49,16 @@ class telegram
 			case '/teclado':
 			{
 				$response = "¿Funciona el teclado personalizado?";
-				$keyboard = array("si", "no", "no sé");
+				$keyboardButton1 = array(
+					'text' => "si"
+				);
+				$keyboardButton2 = array(
+					'text' => "no"
+				);
+				$keyboardButton3 = array(
+					'text' => "depende"
+				);
+				$keyboard = array($keyboardButton1, $keyboardButton2, $keyboardButton3);
 
 				$params = array
 				(
