@@ -69,7 +69,7 @@ class telegram
 					'text' => $response,
 					'disable_web_page_preview' => null,
 					'reply_to_message_id' => $reply_to_message_id,
-					'reply_markup' => $parametros
+					'reply_markup' => json_encode($parametros)
 				);
 				$this->request('sendMessage', $params);
 				break;
