@@ -75,38 +75,19 @@ class telegram
 				break;
 			}
 
-			case '/golazo':
-			{
-				$filename = PATH."/images/senor.jpg";
-
-				if(class_exists('CURLFile'))
-					$cfile = new CURLFile($filename);
-				else
-					$cfile = "@".$filename;
-
-                                $params = array
-                                (
-					'chat_id' => $chat_id,
-					'photo' => $cfile,
-					'reply_to_message_id' => $reply_to_message_id,
-					'reply_markup' => null
-                                );
-				$this->request('sendPhoto', $params);
-
+			case '/info':
+				$response = "Bot creado para pruebas";
+				$params = array
+                (
+                         'chat_id' => $chat_id,
+                         'text' => $response,
+                         'disable_web_page_preview' => null,
+                         'reply_to_message_id' => $reply_to_message_id
+                );
+                $this->request('sendMessage', $params);
+				default:
 				break;
-			}
-
-			case '/getInfo':
-                                $params = array
-                                (
-                                        'chat_id' => $chat_id,
-                                        'text' => print_r($item, true),
-                                        'disable_web_page_preview' => null,
-                                        'reply_to_message_id' => $reply_to_message_id
-                                );
-                                $this->request('sendMessage', $params);
-			default:
-				break;
+			
 		}
 	}
 }
