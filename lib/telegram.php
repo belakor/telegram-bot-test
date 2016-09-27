@@ -31,15 +31,32 @@ class telegram
 
 		switch($text)
 		{
-			case '/hora':
+			case '/fecha':
 			{
-				$response = "la fecha actual es " . date("d") . " del " . date("m") . " de " . date("Y");
+				$response = "Estamos a " . date("d") . " del " . date("m") . " de " . date("Y");
 
 				$params = array
 				(
 					'chat_id' => $chat_id,
 					'text' => $response,
 					'disable_web_page_preview' => null,
+					'reply_to_message_id' => $reply_to_message_id
+				);
+				$this->request('sendMessage', $params);
+				break;
+			}
+			
+			case '/teclado':
+			{
+				$response = "¿Funciona el teclado personalizado?";
+				$keyboard = array("si", "no", "no sé");
+
+				$params = array
+				(
+					'chat_id' => $chat_id,
+					'text' => $response,
+					'disable_web_page_preview' => null,
+					'reply_markup' => $keyboard,
 					'reply_to_message_id' => $reply_to_message_id
 				);
 				$this->request('sendMessage', $params);
