@@ -49,29 +49,26 @@ class telegram
 			case '/teclado':
 			{
 				$response = "¿Funciona el teclado personalizado?";
-				// $keyboardButton1 = array(
-				// 	'text' => "si"
-				// );
-				// $keyboardButton2 = array(
-				// 	'text' => "no"
-				// );
-				// $keyboardButton3 = array(
-				// 	'text' => "depende"
-				// );
-				$keyboard = array(
-					'keyboard' => [
-						['si'],
-						['no'], 
-						['depende']
-					]
-				);
+				$keyboard = [
+				    ['si'],
+				    ['no'],
+				    ['depende']
+				];
+			
+				$reply_markup = $telegram->replyKeyboardMarkup([
+				    'keyboard' => $keyboard, 
+				    'resize_keyboard' => true, 
+				    'one_time_keyboard' => true
+				]);
+			
+			
 				$params = array
 				(
 					'chat_id' => $chat_id,
 					'text' => $response,
 					'disable_web_page_preview' => null,
 					'reply_to_message_id' => $reply_to_message_id,
-					'reply_markup' => $keyboard
+					'reply_markup' => $reply_markup
 				);
 				$this->request('sendMessage', $params);
 				break;
